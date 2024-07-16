@@ -50,10 +50,6 @@ contract KryptoPunks is ERC721AQueryable, Ownable {
     // MINT FUNCTIONS
 
     function mint(uint256 _mintAmount) external payable {
-        if (paused == 1) revert KryptoPunks__ContractIsPaused();
-        if (_mintAmount == 0) revert KryptoPunks__InvalidMintAmount();
-        if (_mintAmount > maxMintAmountPerTx)
-            revert KryptoPunks__MaxMintAmountExceeded();
         uint256 supply = totalSupply();
         if (supply + _mintAmount > maxSupply)
             revert KryptoPunks__NftSupplyLimitExceeded();
